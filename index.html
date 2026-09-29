@@ -458,9 +458,24 @@
     .highlight-mode #passageText { cursor: text; }
 
     mark.hl {
-      background: #ffe066;
       border-radius: 2px;
       padding: 1px 0;
+    }
+
+    mark.hl.hl-yellow {
+      background: #ffe066;
+    }
+
+    mark.hl.hl-green {
+      background: #a7f3a0;
+    }
+
+    mark.hl.hl-pink {
+      background: #ffb3c6;
+    }
+
+    mark.hl.hl-blue {
+      background: #9bd7ff;
     }
 
     /* Questions */
@@ -999,40 +1014,31 @@ Choose the correct letter A, B, C or D.
    A) It made books more beautiful
    B) It allowed mass production of texts
    C) It improved handwriting
-   D) It reduced the size of books
+   D) It reduced paper consumption
 
-2. According to the passage, the printing press helped:
-   A) Only religious institutions
-   B) Just scientists
-   C) Spread new ideas widely
-   D) Create censorship
+2. According to the passage, why were books expensive before the printing press?
+   A) The materials were expensive
+   B) They had to be copied by hand
+   C) Printers charged high prices
+   D) Paper was scarce
 
-## QUESTIONS 6-10
-Type: True/False/Not Given
+## QUESTIONS 6-8
+Type: True / False / Not Given
 
-Do the following statements agree with the information in the passage?
-Write:
-TRUE if the statement agrees with the information
-FALSE if the statement contradicts the information
-NOT GIVEN if there is no information on this
-
-6. Johannes Gutenberg invented the printing press in the 15th century.
-7. The printing press decreased literacy rates in Europe.
-8. The printing press was mainly used for scientific publications.
+6. The printing press was invented in the 16th century.
+7. Book production increased significantly after the printing press was invented.
+8. The passage mentions the cost of printing ink.
 
 ## ANSWER KEY
 1. B
-2. C
-6. TRUE
-7. FALSE
-8. NOT GIVEN
+2. B
+6. False
+7. True
+8. Not Given
 
-## EXPLANATIONS (Optional)
-1. Paragraph 1 clearly states "allowed for mass production of texts"
-2. Paragraph 2 mentions spread of new ideas
-6. Stated in paragraph 1
-7. Contradicts paragraph 1 which says literacy increased
-8. Scientists mentioned but not "mainly" - NOT GIVEN</pre>
+## EXPLANATIONS
+1. B is correct because the passage specifically mentions the printing press allowed mass production of texts.
+2. B is correct as the passage states books were rare and expensive because they were painstakingly copied by hand.</pre>
           </div>
         </div>
       </div>
@@ -1040,54 +1046,44 @@ NOT GIVEN if there is no information on this
   </div>
 </div>
 
-
 <!-- ===========================
      VIEW: EXAM
 ============================ -->
 <div id="view-exam" class="view">
-  <!-- Top Bar -->
   <div class="top-bar">
     <div class="top-bar-left">
-      <span class="top-bar-logo">📚 IELTS Reading</span>
+      <div class="top-bar-logo">📚 IELTS Reading</div>
       <div class="timer-display" id="timerDisplay">
         <span class="timer-icon">⏱️</span>
         <span id="timerText">20:00</span>
       </div>
-      <div class="progress-pill" id="progressPill">Answered: 0 / 0</div>
+      <div class="progress-pill" id="progressPill">0 / 0</div>
     </div>
     <div class="top-bar-right">
-      <button class="btn-highlight" id="highlightToggle">🖍️ Highlight</button>
-      <button class="btn-clear-hl" id="clearHighlights" title="Clear all highlights">✕ Clear</button>
-      <button class="btn-submit" id="submitBtn">Submit Test ✔</button>
+      <button class="btn-highlight" id="highlightBtn">🖍️ Highlight</button>
+      <button class="btn-clear-hl" id="clearHlBtn">Clear</button>
+      <button class="btn-submit" id="submitBtn">Submit</button>
     </div>
   </div>
 
-  <!-- Exam Layout -->
   <div class="exam-layout">
-    <!-- Left: Passage -->
     <div class="panel">
       <div class="panel-header">
-        <h3>📖 Reading Passage</h3>
-        <span style="font-size:0.8rem;color:#888;">Select text to highlight</span>
+        <h3>📖 Passage</h3>
       </div>
-      <div class="panel-body" id="passagePanel">
+      <div class="panel-body">
         <div id="passageText"></div>
       </div>
     </div>
 
-    <!-- Right: Questions -->
     <div class="panel">
       <div class="panel-header">
-        <h3>✏️ Questions</h3>
-        <span style="font-size:0.8rem;color:#888;" id="qCountLabel">0 questions</span>
+        <h3>❓ Questions</h3>
       </div>
-      <div class="panel-body" id="questionsPanel">
-        <div id="questionsContainer"></div>
-      </div>
+      <div class="panel-body" id="questionsContainer"></div>
     </div>
   </div>
 </div>
-
 
 <!-- ===========================
      VIEW: RESULTS
@@ -1095,899 +1091,472 @@ NOT GIVEN if there is no information on this
 <div id="view-results" class="view">
   <div class="results-wrapper">
     <div class="results-header">
-      <h1>🎯 Test Results</h1>
-      <p id="resultsSubtitle">Here's how you performed</p>
+      <h1>📊 Test Results</h1>
+      <p>Review your performance and answers below</p>
     </div>
 
-    <!-- Score Card -->
     <div class="score-card">
       <div class="score-top">
         <div class="band-block">
-          <div class="band-label">IELTS Band Score</div>
-          <div class="band-number" id="rBandScore">0.0</div>
-          <div class="band-tag" id="rBandTag">–</div>
+          <div class="band-label">IELTS Band</div>
+          <div class="band-number" id="bandScore">7.5</div>
+          <div class="band-tag">Excellent</div>
         </div>
         <div class="score-stats">
           <div class="stat-block">
             <span class="stat-emoji">✅</span>
-            <span class="stat-num" id="rCorrect">0</span>
+            <span class="stat-num" id="correctCount">0</span>
             <span class="stat-lbl">Correct</span>
           </div>
           <div class="stat-block">
             <span class="stat-emoji">❌</span>
-            <span class="stat-num" id="rWrong">0</span>
+            <span class="stat-num" id="wrongCount">0</span>
             <span class="stat-lbl">Wrong</span>
           </div>
           <div class="stat-block">
-            <span class="stat-emoji">⭕</span>
-            <span class="stat-num" id="rSkipped">0</span>
+            <span class="stat-emoji">⏭️</span>
+            <span class="stat-num" id="skippedCount">0</span>
             <span class="stat-lbl">Skipped</span>
-          </div>
-          <div class="stat-block">
-            <span class="stat-emoji">📊</span>
-            <span class="stat-num" id="rPercent">0%</span>
-            <span class="stat-lbl">Accuracy</span>
           </div>
         </div>
       </div>
+
       <div class="score-bar-section">
-        <div class="score-bar-label" id="rBarLabel">Score: 0 / 0</div>
+        <div class="score-bar-label">Accuracy</div>
         <div class="score-bar-track">
-          <div class="score-bar-fill" id="rBarFill" style="width:0%"></div>
+          <div class="score-bar-fill" id="accuracyBar" style="width: 0%;"></div>
         </div>
       </div>
     </div>
 
-    <!-- Answer Review -->
-    <div class="section-title">📋 Answer Review</div>
-    <div id="reviewContainer"></div>
+    <div id="reviewSection"></div>
 
-    <!-- Actions -->
     <div class="action-row">
-      <button class="btn-action secondary" id="tryAgainBtn">🔄 Try Again</button>
+      <button class="btn-action secondary" id="retryBtn">↻ Retry Test</button>
       <button class="btn-action primary" id="newTestBtn">➕ New Test</button>
     </div>
   </div>
 </div>
 
-
-<!-- Submit Confirm Modal -->
-<div class="modal-backdrop" id="submitModal">
+<!-- ===== MODAL ===== -->
+<div class="modal-backdrop" id="confirmModal">
   <div class="modal">
-    <div class="modal-icon">📝</div>
+    <div class="modal-icon">⚠️</div>
     <h3>Submit Test?</h3>
-    <p id="modalMsg">Are you sure you want to submit your answers? You have <strong id="modalUnanswered">0</strong> unanswered question(s).</p>
+    <p>Are you sure you want to submit? You won't be able to change your answers.</p>
     <div class="modal-btns">
-      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
-      <button class="modal-confirm" onclick="confirmSubmit()">Submit Now</button>
+      <button class="modal-cancel" id="modalCancel">Cancel</button>
+      <button class="modal-confirm" id="modalConfirm">Submit</button>
     </div>
   </div>
 </div>
 
-
 <script>
-/* =====================================================
-   PARSER
-===================================================== */
-class SimpleParser {
-  parse(content) {
-    return {
-      passage: this.extractPassage(content),
-      questions: this.extractQuestions(content),
-      answers: this.extractAnswers(content),
-      explanations: this.extractExplanations(content)
-    };
-  }
+  // ===== GLOBAL VARIABLES & INIT =====
+  const highlightColors = ['yellow', 'green', 'pink', 'blue'];
+  let highlightColorIndex = 0;
+  let testState = {
+    passage: '',
+    questions: [],
+    answers: {},
+    flags: {},
+    startTime: null,
+    timerDuration: 0,
+    highlightMode: false
+  };
 
-  extractPassage(content) {
-    const match = content.match(/##\s*PASSAGE\s*\n([\s\S]*?)(?=##\s*QUESTIONS)/i);
-    return match ? match[1].trim() : '';
-  }
+  // ===== INITIAL EVENTS =====
+  document.getElementById('guideToggle').addEventListener('click', () => {
+    const body = document.getElementById('guideBody');
+    const toggle = document.getElementById('guideToggle');
+    body.classList.toggle('open');
+    toggle.classList.toggle('open');
+  });
 
-  extractQuestions(content) {
-    const questions = [];
+  document.getElementById('startBtn').addEventListener('click', startTest);
 
-    // Find all QUESTIONS sections
-    const sections = [];
-    const sectionRegex = /##\s*QUESTIONS[^\n]*\n([\s\S]*?)(?=##\s*(?:QUESTIONS|ANSWER)|$)/gi;
-    let m;
-    while ((m = sectionRegex.exec(content)) !== null) {
-      sections.push(m[1]);
-    }
+  // ===== START TEST =====
+  function startTest() {
+    const content = document.getElementById('contentInput').value.trim();
+    const timerDuration = parseInt(document.getElementById('timerSelect').value);
 
-    for (const section of sections) {
-      // Determine type
-      if (/Type:\s*Multiple Choice/i.test(section)) {
-        const qs = this.parseMCQ(section);
-        questions.push(...qs);
-      } else if (/Type:\s*True\/False/i.test(section)) {
-        const qs = this.parseTrueFalse(section);
-        questions.push(...qs);
-      }
-    }
-
-    return questions;
-  }
-
-  parseMCQ(text) {
-    const questions = [];
-
-    // Extract instruction (before first numbered question)
-    const instrMatch = text.match(/(?:Type:[^\n]*\n)([\s\S]*?)(?=\n\s*\d+\.)/i);
-    const instruction = instrMatch ? instrMatch[1].trim() : 'Choose the correct letter A, B, C or D.';
-
-    // Capture each numbered question block
-    const qRegex = /(\d+)\.\s+([\s\S]*?)(?=\n\s*\d+\.|$)/g;
-    let m;
-
-    while ((m = qRegex.exec(text)) !== null) {
-      const num = parseInt(m[1]);
-      const block = m[2];
-
-      // Parse question text (before first option)
-      const lines = block.split('\n').map(l => l.trim()).filter(l => l);
-      const qLines = [];
-      const options = [];
-      let inOptions = false;
-
-      for (const line of lines) {
-        if (/^[A-D]\)/.test(line)) {
-          inOptions = true;
-          options.push(line);
-        } else if (!inOptions) {
-          qLines.push(line);
-        } else {
-          // continuation of option
-          if (options.length > 0) options[options.length - 1] += ' ' + line;
-        }
-      }
-
-      if (qLines.length > 0 && options.length >= 2) {
-        questions.push({
-          num,
-          type: 'mcq',
-          text: qLines.join(' ').trim(),
-          options: options.map(o => ({
-            letter: o.slice(0, 1),
-            text: o.slice(2).trim()
-          })),
-          instruction
-        });
-      }
-    }
-
-    return questions;
-  }
-
-  parseTrueFalse(text) {
-    const questions = [];
-
-    // Extract instruction block
-    const instrMatch = text.match(/Type:[^\n]*\n([\s\S]*?)(?=\n\s*\d+\.)/i);
-    let instruction = instrMatch ? instrMatch[1].trim() : '';
-    // Clean up instruction
-    instruction = instruction.replace(/^Do the following.*?\n/i, '').trim();
-
-    const qRegex = /(\d+)\.\s+(.+)/g;
-    let m;
-
-    while ((m = qRegex.exec(text)) !== null) {
-      questions.push({
-        num: parseInt(m[1]),
-        type: 'tfng',
-        text: m[2].trim(),
-        instruction
-      });
-    }
-
-    return questions;
-  }
-
-  extractAnswers(content) {
-    const answers = {};
-    const match = content.match(/##\s*ANSWER KEY\s*\n([\s\S]*?)(?=##|$)/i);
-    if (!match) return answers;
-
-    const lines = match[1].split('\n');
-    for (const line of lines) {
-      const m = line.match(/^(\d+)[.:\s]+(.+)/);
-      if (m) {
-        answers[parseInt(m[1])] = m[2].trim().toUpperCase();
-      }
-    }
-    return answers;
-  }
-
-  extractExplanations(content) {
-    const explanations = {};
-    const match = content.match(/##\s*EXPLANATIONS?[^\n]*\n([\s\S]*?)(?=##|$)/i);
-    if (!match) return explanations;
-
-    const lines = match[1].split('\n');
-    for (const line of lines) {
-      const m = line.match(/^(\d+)[.:\s]+(.+)/);
-      if (m) {
-        explanations[parseInt(m[1])] = m[2].trim();
-      }
-    }
-    return explanations;
-  }
-}
-
-
-/* =====================================================
-   TIMER
-===================================================== */
-class Timer {
-  constructor(seconds, onTick, onEnd) {
-    this.total = seconds;
-    this.remaining = seconds;
-    this.onTick = onTick;
-    this.onEnd = onEnd;
-    this.interval = null;
-    this.running = false;
-  }
-
-  start() {
-    if (this.total === 0) {
-      // Practice mode - count up
-      this.countingUp = true;
-      this.elapsed = 0;
-      this.running = true;
-      this.interval = setInterval(() => {
-        this.elapsed++;
-        this.onTick(null, this.elapsed);
-      }, 1000);
-      this.onTick(null, 0);
+    if (!content) {
+      showError('Please paste content to start the test');
       return;
     }
 
-    this.running = true;
-    this.interval = setInterval(() => {
-      this.remaining--;
-      this.onTick(this.remaining, null);
-      if (this.remaining <= 0) {
-        this.stop();
-        this.onEnd();
-      }
-    }, 1000);
-    this.onTick(this.remaining, null);
+    const parsed = parseContent(content);
+    if (!parsed) return;
+
+    testState.passage = parsed.passage;
+    testState.questions = parsed.questions;
+    testState.timerDuration = timerDuration;
+    testState.startTime = Date.now();
+
+    renderExam();
+    switchView('exam');
+    startTimer();
   }
 
-  stop() {
-    clearInterval(this.interval);
-    this.running = false;
-  }
-
-  formatTime(s) {
-    const m = Math.floor(Math.abs(s) / 60);
-    const sec = Math.abs(s) % 60;
-    return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-  }
-}
-
-
-/* =====================================================
-   SCORING
-===================================================== */
-const BAND_SCORES_10 = {
-  10: 9.0, 9: 8.5, 8: 7.5, 7: 6.5, 6: 6.0,
-  5: 5.5, 4: 5.0, 3: 4.0, 2: 3.0, 1: 2.0, 0: 1.0
-};
-
-const BAND_SCORES_15 = {
-  15: 9.0, 14: 8.5, 13: 8.0, 12: 7.5,
-  11: 7.0, 10: 6.5, 9: 6.0, 8: 5.5,
-  7: 5.0, 6: 4.5, 5: 4.0, 4: 3.5,
-  3: 3.0, 2: 2.0, 1: 1.5, 0: 1.0
-};
-
-function calculateBand(correct, total) {
-  if (total <= 10) return BAND_SCORES_10[correct] ?? 1.0;
-  if (total <= 15) return BAND_SCORES_15[correct] ?? 1.0;
-  // Interpolate for other totals
-  const pct = correct / total;
-  if (pct >= 1.0) return 9.0;
-  if (pct >= 0.9) return 8.5;
-  if (pct >= 0.8) return 7.5;
-  if (pct >= 0.7) return 6.5;
-  if (pct >= 0.6) return 6.0;
-  if (pct >= 0.5) return 5.5;
-  if (pct >= 0.4) return 5.0;
-  if (pct >= 0.3) return 4.0;
-  if (pct >= 0.2) return 3.0;
-  if (pct >= 0.1) return 2.0;
-  return 1.0;
-}
-
-function getBandTag(band) {
-  if (band >= 9.0) return 'Expert';
-  if (band >= 8.0) return 'Very Good';
-  if (band >= 7.0) return 'Good';
-  if (band >= 6.0) return 'Competent';
-  if (band >= 5.0) return 'Modest';
-  if (band >= 4.0) return 'Limited';
-  return 'Below Band 4';
-}
-
-
-/* =====================================================
-   STATE
-===================================================== */
-let examData = null;     // { passage, questions, answers, explanations }
-let userAnswers = {};    // { qNum: answerString }
-let flagged = {};        // { qNum: bool }
-let timerInstance = null;
-let highlightMode = false;
-
-const parser = new SimpleParser();
-
-
-/* =====================================================
-   VIEW MANAGEMENT
-===================================================== */
-function showView(name) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById('view-' + name).classList.add('active');
-  window.scrollTo(0, 0);
-}
-
-
-/* =====================================================
-   INPUT PAGE
-===================================================== */
-document.getElementById('guideToggle').addEventListener('click', function () {
-  this.classList.toggle('open');
-  document.getElementById('guideBody').classList.toggle('open');
-});
-
-document.getElementById('startBtn').addEventListener('click', () => {
-  const content = document.getElementById('contentInput').value.trim();
-  const errEl = document.getElementById('errorMsg');
-  errEl.style.display = 'none';
-
-  if (!content) {
-    showError('Please paste your IELTS reading content first!');
-    return;
-  }
-
-  if (!content.includes('## PASSAGE')) {
-    showError('❌ Missing "## PASSAGE" section. Please check the format guide.');
-    return;
-  }
-
-  if (!content.includes('## QUESTIONS')) {
-    showError('❌ Missing "## QUESTIONS" section. Please check the format guide.');
-    return;
-  }
-
-  if (!content.includes('## ANSWER KEY')) {
-    showError('❌ Missing "## ANSWER KEY" section. Please check the format guide.');
-    return;
-  }
-
-  const data = parser.parse(content);
-
-  if (!data.passage || data.passage.length < 20) {
-    showError('❌ Could not extract a valid passage. Check your ## PASSAGE section.');
-    return;
-  }
-
-  if (data.questions.length === 0) {
-    showError('❌ No questions found. Make sure questions have numbers (1., 2., etc.) and MCQ options (A) B) C) D)) or are labeled "Type: True/False/Not Given".');
-    return;
-  }
-
-  if (Object.keys(data.answers).length === 0) {
-    showError('❌ No answers found. Check your ## ANSWER KEY section format (e.g., "1. B").');
-    return;
-  }
-
-  // Store
-  examData = data;
-  userAnswers = {};
-  flagged = {};
-
-  const timerSec = parseInt(document.getElementById('timerSelect').value);
-  sessionStorage.setItem('timerDuration', timerSec);
-
-  startExam(timerSec);
-});
-
-function showError(msg) {
-  const el = document.getElementById('errorMsg');
-  el.textContent = msg;
-  el.style.display = 'block';
-  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-
-/* =====================================================
-   EXAM PAGE
-===================================================== */
-function startExam(timerSec) {
-  renderPassage();
-  renderQuestions();
-  setupTimer(timerSec);
-  updateProgress();
-  showView('exam');
-}
-
-/* --- Passage Rendering --- */
-function renderPassage() {
-  const el = document.getElementById('passageText');
-  const paragraphs = examData.passage.split(/\n\s*\n/).filter(p => p.trim());
-
-  if (paragraphs.length === 0) {
-    // Single block – split by newlines
-    const lines = examData.passage.split('\n').filter(l => l.trim());
-    el.innerHTML = lines.map(l => `<p>${escapeHtml(l)}</p>`).join('');
-  } else {
-    el.innerHTML = paragraphs.map(p => `<p>${escapeHtml(p.trim())}</p>`).join('');
-  }
-}
-
-/* --- Questions Rendering --- */
-function renderQuestions() {
-  const container = document.getElementById('questionsContainer');
-  container.innerHTML = '';
-
-  document.getElementById('qCountLabel').textContent = `${examData.questions.length} questions`;
-
-  // Group by type for section headers
-  let lastType = null;
-  let mcqCount = 0, tfngCount = 0;
-
-  examData.questions.forEach((q, idx) => {
-    if (q.type !== lastType) {
-      lastType = q.type;
-      const sep = document.createElement('div');
-      sep.className = 'section-separator';
-
-      if (q.type === 'mcq') {
-        sep.textContent = '📝 Multiple Choice Questions';
-      } else {
-        sep.textContent = '✔ True / False / Not Given';
-      }
-      container.appendChild(sep);
-
-      // Instruction box
-      if (q.instruction) {
-        const instr = document.createElement('div');
-        instr.className = 'section-instruction';
-        instr.textContent = q.type === 'mcq'
-          ? 'Choose the correct letter A, B, C or D.'
-          : 'Write TRUE, FALSE, or NOT GIVEN based on the passage.';
-        container.appendChild(instr);
-      }
+  function parseContent(content) {
+    const passageMatch = content.match(/## PASSAGE\s*([\s\S]*?)(?=## QUESTIONS|$)/i);
+    if (!passageMatch) {
+      showError('Could not find "## PASSAGE" section');
+      return null;
     }
 
-    container.appendChild(buildQuestionEl(q));
-  });
-}
+    const questionsMatch = content.match(/## QUESTIONS[\s\S]*?(?=## ANSWER KEY|$)/i);
+    if (!questionsMatch) {
+      showError('Could not find "## QUESTIONS" section');
+      return null;
+    }
 
-function buildQuestionEl(q) {
-  const block = document.createElement('div');
-  block.className = 'question-block';
-  block.id = `qblock-${q.num}`;
-  block.dataset.qnum = q.num;
+    const answerKeyMatch = content.match(/## ANSWER KEY\s*([\s\S]*?)(?=## EXPLANATIONS|$)/i);
+    if (!answerKeyMatch) {
+      showError('Could not find "## ANSWER KEY" section');
+      return null;
+    }
 
-  const header = document.createElement('div');
-  header.className = 'question-number';
-  header.innerHTML = `
-    <span>Question ${q.num}</span>
-    <button class="flag-btn" id="flag-${q.num}" title="Flag for review" onclick="toggleFlag(${q.num})">🚩</button>
-  `;
-  block.appendChild(header);
+    const passage = passageMatch[1].trim();
+    const questionsText = questionsMatch[0];
+    const answerKeyText = answerKeyMatch[1];
 
-  const qText = document.createElement('div');
-  qText.className = 'question-text';
-  qText.textContent = q.text;
-  block.appendChild(qText);
+    const questions = [];
+    const questionBlocks = questionsText.split(/(?=\d+\.)/);
 
-  if (q.type === 'mcq') {
-    const list = document.createElement('div');
-    list.className = 'option-list';
+    let type = 'mcq';
+    for (const block of questionBlocks) {
+      if (block.match(/Type:\s*Multiple Choice/i)) {
+        type = 'mcq';
+        continue;
+      }
+      if (block.match(/Type:\s*True\/False\/Not Given/i) || block.match(/Type:\s*TFNG/i)) {
+        type = 'tfng';
+        continue;
+      }
 
-    q.options.forEach(opt => {
-      const label = document.createElement('label');
-      label.className = 'option-label';
-      label.id = `opt-${q.num}-${opt.letter}`;
-      label.innerHTML = `
-        <input type="radio" name="q${q.num}" value="${opt.letter}" onchange="recordAnswer(${q.num}, '${opt.letter}', this)">
-        <span class="option-circle">${opt.letter}</span>
-        <span>${escapeHtml(opt.text)}</span>
-      `;
-      list.appendChild(label);
-    });
+      if (type === 'mcq') {
+        const mcqMatch = block.match(/(\d+)\.\s*(.+?)\n\s*([A-D]\)[\s\S]*?)(?=\n\d+\.|$)/);
+        if (mcqMatch) {
+          const qNum = mcqMatch[1];
+          const qText = mcqMatch[2].trim();
+          const optionsText = mcqMatch[3];
+          const options = [...optionsText.matchAll(/([A-D])\)\s*([^\n]+)/g)].map(m => ({ letter: m[1], text: m[2].trim() }));
 
-    block.appendChild(list);
+          questions.push({
+            num: qNum,
+            text: qText,
+            type: 'mcq',
+            options,
+            userAnswer: null,
+            flagged: false
+          });
+        }
+      } else if (type === 'tfng') {
+        const tfngMatch = block.match(/(\d+)\.\s*(.+?)(?:\n|$)/);
+        if (tfngMatch) {
+          const qNum = tfngMatch[1];
+          const qText = tfngMatch[2].trim();
 
-  } else if (q.type === 'tfng') {
-    const btnGroup = document.createElement('div');
-    btnGroup.className = 'tfng-list';
-
-    ['TRUE', 'FALSE', 'NOT GIVEN'].forEach(val => {
-      const btn = document.createElement('button');
-      btn.className = 'tfng-btn';
-      btn.textContent = val;
-      btn.dataset.val = val;
-      btn.id = `tfng-${q.num}-${val.replace(' ', '_')}`;
-      btn.onclick = () => selectTFNG(q.num, val, btn);
-      btnGroup.appendChild(btn);
-    });
-
-    block.appendChild(btnGroup);
-  }
-
-  return block;
-}
-
-function recordAnswer(qNum, val, inputEl) {
-  userAnswers[qNum] = val;
-
-  // Update UI - deselect all, select clicked
-  const block = document.getElementById(`qblock-${qNum}`);
-  block.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
-  const parentLabel = inputEl.closest('.option-label');
-  if (parentLabel) parentLabel.classList.add('selected');
-
-  block.classList.add('answered');
-  updateProgress();
-  saveToSession();
-}
-
-function selectTFNG(qNum, val, btnEl) {
-  userAnswers[qNum] = val;
-
-  // Update UI
-  const block = document.getElementById(`qblock-${qNum}`);
-  block.querySelectorAll('.tfng-btn').forEach(b => {
-    b.classList.remove('selected-true', 'selected-false', 'selected-ng');
-  });
-
-  if (val === 'TRUE') btnEl.classList.add('selected-true');
-  else if (val === 'FALSE') btnEl.classList.add('selected-false');
-  else btnEl.classList.add('selected-ng');
-
-  block.classList.add('answered');
-  updateProgress();
-  saveToSession();
-}
-
-function toggleFlag(qNum) {
-  flagged[qNum] = !flagged[qNum];
-  const block = document.getElementById(`qblock-${qNum}`);
-  const btn = document.getElementById(`flag-${qNum}`);
-
-  if (flagged[qNum]) {
-    block.classList.add('flagged');
-    btn.classList.add('flagged');
-    btn.title = 'Flagged – click to unflag';
-  } else {
-    block.classList.remove('flagged');
-    btn.classList.remove('flagged');
-    btn.title = 'Flag for review';
-  }
-}
-
-function updateProgress() {
-  const total = examData ? examData.questions.length : 0;
-  const answered = Object.keys(userAnswers).length;
-  document.getElementById('progressPill').textContent = `Answered: ${answered} / ${total}`;
-}
-
-function saveToSession() {
-  sessionStorage.setItem('userAnswers', JSON.stringify(userAnswers));
-}
-
-
-/* --- Timer --- */
-function setupTimer(seconds) {
-  const display = document.getElementById('timerDisplay');
-  const text = document.getElementById('timerText');
-
-  if (timerInstance) timerInstance.stop();
-
-  if (seconds === 0) {
-    text.textContent = 'Practice';
-    display.className = 'timer-display';
-    return;
-  }
-
-  timerInstance = new Timer(
-    seconds,
-    (remaining, elapsed) => {
-      if (remaining !== null) {
-        text.textContent = timerInstance.formatTime(remaining);
-        if (remaining <= 60) {
-          display.className = 'timer-display danger';
-        } else if (remaining <= 300) {
-          display.className = 'timer-display warning';
-        } else {
-          display.className = 'timer-display';
+          questions.push({
+            num: qNum,
+            text: qText,
+            type: 'tfng',
+            userAnswer: null,
+            flagged: false
+          });
         }
       }
-    },
-    () => {
-      // Time's up – auto submit
-      text.textContent = '00:00';
-      display.className = 'timer-display danger';
-      setTimeout(() => {
-        alert('⏰ Time is up! Your test will be submitted now.');
-        doSubmit();
-      }, 300);
     }
-  );
 
-  timerInstance.start();
-}
-
-
-/* --- Highlight --- */
-document.getElementById('highlightToggle').addEventListener('click', function () {
-  highlightMode = !highlightMode;
-  this.classList.toggle('active', highlightMode);
-  document.getElementById('view-exam').classList.toggle('highlight-mode', highlightMode);
-  this.textContent = highlightMode ? '🖍️ Highlighting ON' : '🖍️ Highlight';
-});
-
-document.getElementById('clearHighlights').addEventListener('click', () => {
-  const passage = document.getElementById('passageText');
-  // Remove all <mark> tags, keep text
-  passage.querySelectorAll('mark.hl').forEach(m => {
-    const text = document.createTextNode(m.textContent);
-    m.replaceWith(text);
-  });
-  // Normalize text nodes
-  passage.normalize();
-});
-
-document.getElementById('passageText').addEventListener('mouseup', () => {
-  if (!highlightMode) return;
-  const selection = window.getSelection();
-  if (!selection || selection.isCollapsed || selection.toString().trim() === '') return;
-
-  const range = selection.getRangeAt(0);
-  const passageEl = document.getElementById('passageText');
-
-  // Make sure selection is within passage
-  if (!passageEl.contains(range.commonAncestorContainer)) return;
-
-  try {
-    const mark = document.createElement('mark');
-    mark.className = 'hl';
-    range.surroundContents(mark);
-    selection.removeAllRanges();
-  } catch (e) {
-    // Selection spans multiple elements – use extractContents approach
-    try {
-      const fragment = range.extractContents();
-      const mark = document.createElement('mark');
-      mark.className = 'hl';
-      mark.appendChild(fragment);
-      range.insertNode(mark);
-      selection.removeAllRanges();
-    } catch (e2) {
-      // Ignore complex selections
+    const answers = {};
+    const answerLines = answerKeyText.split('\n');
+    for (const line of answerLines) {
+      const match = line.match(/^(\d+)\.\s*(.+?)$/);
+      if (match) {
+        answers[match[1]] = match[2].trim().toUpperCase();
+      }
     }
-  }
-});
 
+    for (const q of questions) {
+      q.correctAnswer = answers[q.num];
+    }
 
-/* --- Submit --- */
-document.getElementById('submitBtn').addEventListener('click', () => {
-  const total = examData.questions.length;
-  const answered = Object.keys(userAnswers).length;
-  const unanswered = total - answered;
-
-  document.getElementById('modalUnanswered').textContent = unanswered;
-
-  if (unanswered === 0) {
-    document.getElementById('modalMsg').innerHTML = 'All questions are answered. Ready to submit?';
-  } else {
-    document.getElementById('modalMsg').innerHTML = `You have <strong>${unanswered}</strong> unanswered question(s). Submit anyway?`;
+    return { passage, questions };
   }
 
-  document.getElementById('submitModal').classList.add('open');
-});
+  function renderExam() {
+    document.getElementById('passageText').innerHTML = `<p>${testState.passage.replace(/\n\n/g, '</p><p>')}</p>`;
+    const container = document.getElementById('questionsContainer');
+    container.innerHTML = '';
 
-function closeModal() {
-  document.getElementById('submitModal').classList.remove('open');
-}
+    for (let i = 0; i < testState.questions.length; i++) {
+      const q = testState.questions[i];
+      const block = document.createElement('div');
+      block.className = 'question-block';
+      block.id = `q${q.num}`;
 
-function confirmSubmit() {
-  closeModal();
-  doSubmit();
-}
+      let html = `
+        <div class="question-number">
+          <span>Q${q.num}</span>
+          <button class="flag-btn" data-qnum="${q.num}">🚩</button>
+        </div>
+        <div class="question-text">${q.text}</div>
+      `;
 
-function doSubmit() {
-  if (timerInstance) timerInstance.stop();
+      if (q.type === 'mcq') {
+        html += '<div class="option-list">';
+        for (const opt of q.options) {
+          html += `
+            <label class="option-label" data-qnum="${q.num}" data-answer="${opt.letter}">
+              <input type="radio" name="q${q.num}" value="${opt.letter}">
+              <span class="option-circle">${opt.letter}</span>
+              <span>${opt.text}</span>
+            </label>
+          `;
+        }
+        html += '</div>';
+      } else if (q.type === 'tfng') {
+        html += '<div class="tfng-list">';
+        for (const ans of ['True', 'False', 'Not Given']) {
+          html += `
+            <button class="tfng-btn" data-qnum="${q.num}" data-answer="${ans.toUpperCase()}">
+              ${ans}
+            </button>
+          `;
+        }
+        html += '</div>';
+      }
 
-  // Calculate results
-  const details = [];
-  let correct = 0, wrong = 0, skipped = 0;
-
-  examData.questions.forEach(q => {
-    const userAns = userAnswers[q.num] || null;
-    const correctAns = examData.answers[q.num] || null;
-
-    let status;
-    if (!userAns) {
-      status = 'skipped';
-      skipped++;
-    } else if (userAns === correctAns) {
-      status = 'correct';
-      correct++;
-    } else {
-      status = 'wrong';
-      wrong++;
+      block.innerHTML = html;
+      container.appendChild(block);
     }
 
-    details.push({
-      num: q.num,
-      type: q.type,
-      text: q.text,
-      userAnswer: userAns,
-      correctAnswer: correctAns,
-      status,
-      explanation: examData.explanations[q.num] || null,
-      options: q.options || null
+    setupEventListeners();
+  }
+
+  function setupEventListeners() {
+    document.querySelectorAll('.option-label').forEach(label => {
+      label.addEventListener('click', (e) => {
+        const qnum = label.dataset.qnum;
+        const answer = label.dataset.answer;
+        recordAnswer(qnum, answer, 'mcq');
+      });
     });
+
+    document.querySelectorAll('.tfng-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const qnum = btn.dataset.qnum;
+        const answer = btn.dataset.answer;
+        recordAnswer(qnum, answer, 'tfng');
+      });
+    });
+
+    document.querySelectorAll('.flag-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const qnum = btn.dataset.qnum;
+        toggleFlag(qnum);
+      });
+    });
+
+    document.getElementById('highlightBtn').addEventListener('click', toggleHighlightMode);
+    document.getElementById('clearHlBtn').addEventListener('click', clearHighlights);
+    document.getElementById('submitBtn').addEventListener('click', showSubmitModal);
+
+    document.getElementById('passageText').addEventListener('mouseup', handleTextSelection);
+  }
+
+  function recordAnswer(qnum, answer, type) {
+    testState.answers[qnum] = answer;
+    const block = document.getElementById(`q${qnum}`);
+    block.classList.add('answered');
+    updateProgress();
+  }
+
+  function toggleFlag(qnum) {
+    testState.flags[qnum] = !testState.flags[qnum];
+    const btn = document.querySelector(`[data-qnum="${qnum}"].flag-btn`);
+    btn.classList.toggle('flagged');
+    const block = document.getElementById(`q${qnum}`);
+    block.classList.toggle('flagged');
+  }
+
+  function toggleHighlightMode() {
+    testState.highlightMode = !testState.highlightMode;
+    document.getElementById('highlightBtn').classList.toggle('active');
+    document.getElementById('passageText').parentElement.classList.toggle('highlight-mode');
+  }
+
+  function handleTextSelection() {
+    if (!testState.highlightMode) return;
+
+    const selection = window.getSelection();
+    if (!selection.toString()) return;
+
+    const range = selection.getRangeAt(0);
+    const span = document.createElement('mark');
+    span.className = `hl hl-${highlightColors[highlightColorIndex]}`;
+    highlightColorIndex = (highlightColorIndex + 1) % highlightColors.length;
+
+    try {
+      range.surroundContents(span);
+    } catch (e) {
+      const fragment = range.extractContents();
+      span.appendChild(fragment);
+      range.insertNode(span);
+    }
+
+    selection.removeAllRanges();
+  }
+
+  function clearHighlights() {
+    document.querySelectorAll('mark.hl').forEach(mark => {
+      const parent = mark.parentNode;
+      while (mark.firstChild) {
+        parent.insertBefore(mark.firstChild, mark);
+      }
+      parent.removeChild(mark);
+    });
+    highlightColorIndex = 0;
+  }
+
+  function updateProgress() {
+    const answered = Object.keys(testState.answers).length;
+    const total = testState.questions.length;
+    document.getElementById('progressPill').textContent = `${answered} / ${total}`;
+  }
+
+  function startTimer() {
+    if (testState.timerDuration === 0) return;
+
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerText = document.getElementById('timerText');
+
+    const interval = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - testState.startTime) / 1000);
+      const remaining = Math.max(0, testState.timerDuration - elapsed);
+
+      const mins = Math.floor(remaining / 60);
+      const secs = remaining % 60;
+      timerText.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+      if (remaining <= 60) {
+        timerDisplay.classList.add('warning');
+      }
+      if (remaining <= 10) {
+        timerDisplay.classList.add('danger');
+      }
+
+      if (remaining === 0) {
+        clearInterval(interval);
+        autoSubmit();
+      }
+    }, 100);
+  }
+
+  function showSubmitModal() {
+    document.getElementById('confirmModal').classList.add('open');
+  }
+
+  document.getElementById('modalCancel').addEventListener('click', () => {
+    document.getElementById('confirmModal').classList.remove('open');
   });
 
-  const total = examData.questions.length;
-  const band = calculateBand(correct, total);
+  document.getElementById('modalConfirm').addEventListener('click', submitTest);
 
-  const results = { correct, wrong, skipped, total, band, details };
-  sessionStorage.setItem('examResults', JSON.stringify(results));
+  function autoSubmit() {
+    submitTest();
+  }
 
-  showResults(results);
-}
+  function submitTest() {
+    document.getElementById('confirmModal').classList.remove('open');
 
+    let correct = 0, wrong = 0, skipped = 0;
+    const review = [];
 
-/* =====================================================
-   RESULTS PAGE
-===================================================== */
-function showResults(results) {
-  const { correct, wrong, skipped, total, band, details } = results;
+    for (const q of testState.questions) {
+      const userAnswer = testState.answers[q.num];
+      const correctAnswer = q.correctAnswer;
 
-  document.getElementById('rBandScore').textContent = band.toFixed(1);
-  document.getElementById('rBandTag').textContent = getBandTag(band);
-  document.getElementById('rCorrect').textContent = correct;
-  document.getElementById('rWrong').textContent = wrong;
-  document.getElementById('rSkipped').textContent = skipped;
-
-  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
-  document.getElementById('rPercent').textContent = pct + '%';
-  document.getElementById('rBarLabel').textContent = `Score: ${correct} / ${total}`;
-  document.getElementById('rBarFill').style.width = pct + '%';
-
-  document.getElementById('resultsSubtitle').textContent =
-    `You answered ${correct} out of ${total} questions correctly`;
-
-  // Review
-  const container = document.getElementById('reviewContainer');
-  container.innerHTML = '';
-
-  details.forEach(d => {
-    const card = document.createElement('div');
-    card.className = `review-card ${d.status}`;
-
-    const statusLabel = { correct: '✅ Correct', wrong: '❌ Wrong', skipped: '⭕ Skipped' };
-    const statusClass = d.status;
-
-    let answerChips = '';
-    if (d.type === 'mcq' && d.options) {
-      // Show option texts
-      const getOptText = (letter) => {
-        if (!letter) return null;
-        const opt = d.options.find(o => o.letter === letter);
-        return opt ? `${letter}) ${opt.text}` : letter;
-      };
-
-      const yourText = d.userAnswer ? getOptText(d.userAnswer) : 'Not answered';
-      const corrText = getOptText(d.correctAnswer);
-
-      if (d.status === 'skipped') {
-        answerChips = `
-          <span class="review-answer-chip chip-your wrong">Your answer: Not answered</span>
-          <span class="review-answer-chip chip-correct">Correct: ${escapeHtml(corrText)}</span>
-        `;
-      } else if (d.status === 'correct') {
-        answerChips = `
-          <span class="review-answer-chip chip-correct">✅ ${escapeHtml(yourText)}</span>
-        `;
+      if (!userAnswer) {
+        skipped++;
+        review.push({ q, userAnswer: null, status: 'skipped' });
+      } else if (userAnswer === correctAnswer) {
+        correct++;
+        review.push({ q, userAnswer, status: 'correct' });
       } else {
-        answerChips = `
-          <span class="review-answer-chip chip-your wrong">Your answer: ${escapeHtml(yourText)}</span>
-          <span class="review-answer-chip chip-correct">Correct: ${escapeHtml(corrText)}</span>
-        `;
-      }
-    } else {
-      // TFNG or non-MCQ
-      const yourText = d.userAnswer || 'Not answered';
-      const corrText = d.correctAnswer || '?';
-
-      if (d.status === 'correct') {
-        answerChips = `<span class="review-answer-chip chip-correct">✅ ${escapeHtml(yourText)}</span>`;
-      } else {
-        answerChips = `
-          <span class="review-answer-chip chip-your ${d.status === 'skipped' ? 'wrong' : 'wrong'}">Your answer: ${escapeHtml(yourText)}</span>
-          <span class="review-answer-chip chip-correct">Correct: ${escapeHtml(corrText)}</span>
-        `;
+        wrong++;
+        review.push({ q, userAnswer, status: 'wrong' });
       }
     }
 
-    let explanationHtml = '';
-    if (d.explanation) {
-      explanationHtml = `<div class="review-explanation"><strong>💡 Explanation:</strong> ${escapeHtml(d.explanation)}</div>`;
+    const accuracy = correct / testState.questions.length * 100;
+    const bandScore = (accuracy / 100 * 9).toFixed(1);
+
+    document.getElementById('correctCount').textContent = correct;
+    document.getElementById('wrongCount').textContent = wrong;
+    document.getElementById('skippedCount').textContent = skipped;
+    document.getElementById('bandScore').textContent = bandScore;
+    document.getElementById('accuracyBar').style.width = accuracy + '%';
+
+    const reviewSection = document.getElementById('reviewSection');
+    reviewSection.innerHTML = `<h2 class="section-title">📝 Review</h2>`;
+
+    for (const item of review) {
+      const q = item.q;
+      const card = document.createElement('div');
+      card.className = `review-card ${item.status}`;
+
+      let html = `
+        <div class="review-card-header">
+          <span class="review-qnum">Q${q.num}</span>
+          <span class="review-status ${item.status}">${item.status.toUpperCase()}</span>
+        </div>
+        <div class="review-question">${q.text}</div>
+      `;
+
+      if (item.status === 'skipped') {
+        html += '<span class="review-answer-chip">Not answered</span>';
+      } else {
+        html += `
+          <div class="review-answers">
+            <span class="review-answer-chip chip-your ${item.status === 'wrong' ? 'wrong' : ''}">Your answer: ${item.userAnswer}</span>
+            <span class="review-answer-chip chip-correct">Correct: ${q.correctAnswer}</span>
+          </div>
+        `;
+      }
+
+      card.innerHTML = html;
+      reviewSection.appendChild(card);
     }
 
-    card.innerHTML = `
-      <div class="review-card-header">
-        <span class="review-qnum">Question ${d.num} · ${d.type === 'mcq' ? 'Multiple Choice' : 'True/False/Not Given'}</span>
-        <span class="review-status ${statusClass}">${statusLabel[d.status]}</span>
-      </div>
-      <div class="review-question">${escapeHtml(d.text)}</div>
-      <div class="review-answers">${answerChips}</div>
-      ${explanationHtml}
-    `;
+    switchView('results');
+  }
 
-    container.appendChild(card);
+  function showError(msg) {
+    const errorDiv = document.getElementById('errorMsg');
+    errorDiv.textContent = msg;
+    errorDiv.style.display = 'block';
+  }
+
+  document.getElementById('retryBtn').addEventListener('click', () => {
+    testState = { passage: '', questions: [], answers: {}, flags: {}, startTime: null, timerDuration: 0, highlightMode: false };
+    switchView('exam');
+    renderExam();
+    startTimer();
   });
 
-  showView('results');
-}
-
-document.getElementById('tryAgainBtn').addEventListener('click', () => {
-  // Reload exam with same data
-  userAnswers = {};
-  flagged = {};
-
-  // Reset UI
-  document.getElementById('questionsContainer').querySelectorAll('.question-block').forEach(block => {
-    block.classList.remove('answered', 'flagged');
-    block.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
-    block.querySelectorAll('.tfng-btn').forEach(b => b.classList.remove('selected-true', 'selected-false', 'selected-ng'));
-    block.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-    const fb = block.querySelector('.flag-btn');
-    if (fb) { fb.classList.remove('flagged'); fb.title = 'Flag for review'; }
+  document.getElementById('newTestBtn').addEventListener('click', () => {
+    testState = { passage: '', questions: [], answers: {}, flags: {}, startTime: null, timerDuration: 0, highlightMode: false };
+    document.getElementById('contentInput').value = '';
+    switchView('input');
   });
 
-  const timerSec = parseInt(sessionStorage.getItem('timerDuration') || 1200);
-  setupTimer(timerSec);
-  updateProgress();
-  showView('exam');
-});
-
-document.getElementById('newTestBtn').addEventListener('click', () => {
-  if (timerInstance) timerInstance.stop();
-  examData = null;
-  userAnswers = {};
-  flagged = {};
-  document.getElementById('contentInput').value = '';
-  document.getElementById('errorMsg').style.display = 'none';
-  showView('input');
-});
-
-
-/* =====================================================
-   UTILITY
-===================================================== */
-function escapeHtml(str) {
-  if (!str) return '';
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-// Close modal on backdrop click
-document.getElementById('submitModal').addEventListener('click', function (e) {
-  if (e.target === this) closeModal();
-});
+  function switchView(viewName) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(`view-${viewName}`).classList.add('active');
+  }
 </script>
+
 </body>
 </html>
